@@ -193,7 +193,7 @@ And this username does not have the sudo privilege.
 Lets use linpeas script. This script will find all vulnerablities that are availabe in the target the system.So first download it from github.
 https://github.com/peass-ng/PEASS-ng/releases
 click->linpeas.sh
-And transfers  the scriptinto the target system by using http connection via port 8000
+And transfers  the script into the target system by using http connection via port 8000
 I'm using python for the connection.
 ```bash
 python3 -m http.server
@@ -276,7 +276,7 @@ Run the script.
 ```bash
 ./linpeas.sh
 ```
-We got the /gdb SUID vulerablitiy.
+We got the /gdb SUID Vulnerability.
 ```bash
 gdb -nx -ex 'python import os; os.execl("/bin/sh", "sh", "-p")' -ex quit
 ```
